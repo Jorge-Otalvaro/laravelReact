@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 import $ from 'jquery'
 
 
-const endpoint = 'http://127.0.0.1:8000/api/users';
+const endpoint = 'https://ekoom.herokuapp.com/api/users';
 
 const ShowForm = () => {
 	/*Estado para mostrar u ocultar*/
