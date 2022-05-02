@@ -1,17 +1,16 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import ShowForm from './components/ShowForm';
-import CreateForm from './components/CreateForm';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='' element={ <CreateForm/> } />
+        	<Route path='' element={ <ShowForm/> } />
         </Routes>
       </BrowserRouter>      
     </div>
