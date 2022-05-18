@@ -25,21 +25,33 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-        $nickname = Str::of($request->email)->explode('@');
+        $edad = $request->age;       
 
-        $user = User::create([
-            'name'      => $request->name,
-            'email'     => $request->email,
-            'mobile'    => $request->mobile,
-            'age'       => $request->age,
-            'nickname'  => $nickname[0]
-        ]);
+        if ($edad >= 18 && $edad <= 100) {
 
-        return response()->json([
-            "success" => true,
-            "message" => "User created successfully.",
-            "results" => new UserResource($user),
-        ]);
+            $nickname = Str::of($request->email)->explode('@');
+
+            $user = User::create([
+                'name'      => $request->name,
+                'email'     => $request->email,
+                'mobile'    => $request->mobile,
+                'age'       => $request->age,
+                'nickname'  => $nickname[0]
+            ]);
+
+            return response()->json([
+                "success" => true,
+                "message" => "User created successfully.",
+                "results" => new UserResource($user),
+            ]);
+
+        } else {
+
+            return response()->json(
+                'El usuario no cumple con la edad requeridad, no puede registrarse', 
+                400
+            );
+        }        
     }
 
     public function update(StoreUserRequest $request, User $user)
